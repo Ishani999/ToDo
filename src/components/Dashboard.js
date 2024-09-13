@@ -112,17 +112,20 @@ function Dashboard() {
                 value={newTitle}
                 onChange={(e) => setNewTitle(e.target.value)}
               />
+               <div className="date-input-container">
               <input 
                 type="text" 
                 placeholder="Description" 
                 value={newDescription}
                 onChange={(e) => setNewDescription(e.target.value)}
               />
+             </div>
               <input 
                 type="date" 
                 value={newDueDate}
                 onChange={(e) => setNewDueDate(e.target.value)}
               />
+          
               <select 
                 value={newPriority}
                 onChange={(e) => setNewPriority(e.target.value)}
@@ -136,8 +139,15 @@ function Dashboard() {
           </div>
         </div>
       )}
-      
+      <body>
+    <div class="main-content">
     </div>
+    <footer class="app-footer">
+       
+    </footer>
+</body>
+    </div>
+    
   );
 }
 
