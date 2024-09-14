@@ -3,38 +3,34 @@ html, body {
   margin: 0;
 }
 
-body {
+.page-container {
   display: flex;
   flex-direction: column;
+  min-height: 100vh;
 }
+
 .main-content {
-  flex: 1; 
-  padding: 120px;
+  flex: 1;
 }
 
+.app-header {
+  background-color: #6366F1;
+  height: 130px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 36px;
+}
 
-.dashboard {
-    padding: 20px;
-  
-  }
-  .app-header {
-    background-color: #6366F1; 
-    height: 130px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    font-size: 36px;
-  }
-  .app-footer {
-    background-color: #6366F1; 
-    height: 30px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    color: white;
-    
-  }
+.app-footer {
+  background-color: #6366F1;
+  height: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+}
   .task-controls {
     margin-top: 30px;
     margin-bottom: 20px;
@@ -257,7 +253,42 @@ body {
     font-size: 14px;
     color: #888;
   }
+  .task-actions {
+    display: flex;
+    gap: 10px;
+  }
   
+  .task-action-btn {
+    padding: 5px 15px;
+    border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 10px; /* Adjust as needed */
+  
+  transition: background-color 0.3s, color 0.3s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  }
+  
+  .edit-btn {
+    background-color: #6366F1; 
+    color: white; 
+    font-size: 17px;
+    border-radius: 6px;
+    margin-left: 30px;
+  }
+  
+  .delete-btn {
+    background-color: #6366F1;
+   color: white;
+   font-size: 17px;
+    border-radius: 6px;
+  }
+  
+  .edit-btn:hover, .delete-btn:hover {
+    color: #000;
+  }
   .priority-dot {
     display: inline-block;
     width: 10px;

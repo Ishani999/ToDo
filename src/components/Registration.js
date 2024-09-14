@@ -1,15 +1,52 @@
+import { useAuth } from '../context/AuthContext';
 import React, { useState } from 'react';
 import '../styles/Auth.css'; 
 import image from '../images/a.jpg'; 
+
+
 const Register = () => {
+  const { register } = useAuth();
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
 
+  const [errorMessage, setErrorMessage] = useState('');
+  const [loading, setLoading] = useState(false);
+
+  const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email);
+
   const handleRegister = (e) => {
     e.preventDefault();
-    
+    setErrorMessage('');
+
+    if (!isValidEmail(email)) {
+      setErrorMessage('Please enter a valid email');
+      return;
+    }
+
+    if (username.length < 4) {
+      setErrorMessage('Username must be at least 4 characters');
+      return;
+    }
+
+    if (password.length < 6) {
+      setErrorMessage('Password must be at least 6 characters');
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      setErrorMessage('Passwords do not match');
+      return;
+    }
+
+    setLoading(true);
+
+    // Simulate registration
+    setTimeout(() => {
+      setLoading(false);
+      register(email, username, password);
+    }, 1500);
   };
 
   return (
