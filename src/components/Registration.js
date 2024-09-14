@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
 import '../styles/Auth.css'; 
+import { useAuth } from '../context/AuthContext';
 import image from '../images/a.jpg'; 
 const Register = () => {
+  const { login } = useAuth(); 
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
@@ -9,6 +11,13 @@ const Register = () => {
 
   const handleRegister = (e) => {
     e.preventDefault();
+    if (password !== confirmPassword) {
+      alert("Passwords do not match!");
+      return;
+    }
+
+    // Call the login function with email and password 
+    login(email, password);
     
   };
 

@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import '../styles/Auth.css'; 
+import { useAuth } from '../context/AuthContext';
 import image from '../images/a.jpg'; 
 
 const Login = () => {
+  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const navigate = useNavigate(); 
 
   const handleLogin = (e) => {
     e.preventDefault();
+    login(email, password);
     navigate('/dashboard');
   };
 
