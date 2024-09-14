@@ -1,44 +1,18 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { useAuth } from '../context/AuthContext';
 import '../styles/Auth.css'; 
 import image from '../images/a.jpg'; 
 
 const Login = () => {
-  const { login } = useAuth();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [errorMessage, setErrorMessage] = useState('');
-  const [loading, setLoading] = useState(false);
   const navigate = useNavigate(); 
 
-   // Validates if the email is correct
-   const isValidEmail = (email) => /\S+@\S+\.\S+/.test(email); 
+  const handleLogin = (e) => {
+    e.preventDefault();
+    navigate('/dashboard');
+  };
 
-   const handleLogin = (e) => {
-     e.preventDefault();
-     setErrorMessage(''); // Clear the error message before submitting
- 
-     // Validation
-     if (!isValidEmail(email)) {
-       setErrorMessage('Please enter a valid email');
-       return;
-     }
- 
-     if (password.length < 6) {
-       setErrorMessage('Password must be at least 6 characters');
-       return;
-     }
- 
-     setLoading(true); // Set loading to true when logging in
- 
-     // Simulate login (no backend)
-     setTimeout(() => {
-       setLoading(false); // Stop the loading spinner after the "API call"
-       login(email, password); // Call the login function from AuthContext
-     }, 1500);
-   };
- 
   return (
     <div className="auth-container">
       <div className="auth-box">
